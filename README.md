@@ -3,7 +3,7 @@ Technical practice for Intercorp Retail "client-manager"
 
 ##Local usage
 
-###Download dependencies
+###Download dependencies (and run tests)
 
 ```sh
 mvn clean install

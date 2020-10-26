@@ -4,7 +4,6 @@ import io.swagger.annotations.ApiModelProperty;
 import org.hibernate.annotations.NotFound;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlTransient;
 import java.util.Date;
@@ -23,8 +22,7 @@ public class Client {
     @ApiModelProperty(hidden = true)
     private Long id;
 
-    @Column
-    @NotNull(message = "asd")
+    @Column(nullable = false)
     private String name;
 
     @Column(nullable = false)
