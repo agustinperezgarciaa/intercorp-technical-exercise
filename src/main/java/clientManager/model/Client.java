@@ -18,7 +18,7 @@ public class Client {
 
     @XmlTransient
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy= GenerationType.AUTO)
     @ApiModelProperty(hidden = true)
     private Long id;
 

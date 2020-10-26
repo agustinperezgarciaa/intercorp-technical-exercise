@@ -1,19 +1,19 @@
 # intercorp-technical-exercise
 Technical practice for Intercorp Retail "client-manager"
 
-##Local usage
+## Local usage
 
-###Download dependencies (and run tests)
+### Download dependencies (and run tests)
 
 ```sh
 mvn clean install
 ```
 
-###Run sprint-boot application
+### Run sprint-boot application
 
 ```sh
 mvn spring-boot:run
 ```
 
-###api url:
+### api url:
 http://localhost:8080/swagger-ui.html#/
