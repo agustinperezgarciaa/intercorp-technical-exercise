@@ -27,7 +27,7 @@ public class ClientServiceImp implements ClientService {
 
     public List<ClientMortalityData> getClientsMortalityData() {
         List<Client> clients = getAllClients();
-        checkEmptyClients(clients);
+        checkEmptyClients(clients, "mortality data");
         List<ClientMortalityData> clientMortalityDataList = new ArrayList();
         for(Client client: clients){
             Date mortalityData = calculateMortalityDate(client);
@@ -39,15 +39,15 @@ public class ClientServiceImp implements ClientService {
 
     public ClientsAgeData getClientsAgeData() {
         List<Client> clients = getAllClients();
-        checkEmptyClients(clients);
+        checkEmptyClients(clients, "age data");
         double averageAge = calculateAverageAge(clients);
         double standardDeviation = calculateStandardDeviation(averageAge, clients);
         return new ClientsAgeData(averageAge, standardDeviation);
     }
 
-    private void checkEmptyClients(List<Client> clients) throws EmptyResultDataAccessException {
+    private void checkEmptyClients(List<Client> clients, String dataType) throws EmptyResultDataAccessException {
         if (clients.isEmpty()){
-            throw new EmptyResultDataAccessException("No clients found", 1);
+            throw new EmptyResultDataAccessException("Cannot calculate "+ dataType +" without clients", 1);
         }
     }
 

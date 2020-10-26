@@ -6,10 +6,12 @@ import clientManager.dto.ClientMortalityData;
 import clientManager.dto.ClientsAgeData;
 import clientManager.model.Client;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 import clientManager.service.ClientService;
+
+import javax.validation.Valid;
 
 /**
  * @author Agustin Perez Garcia
@@ -22,20 +24,20 @@ public class ClientRestController {
     private ClientService clientService;
 
     @PostMapping("/creacliente")
-    public Client saveClient(Client client) {
+    public ResponseEntity createNewClient(@Valid @RequestBody Client client) {
         clientService.saveClient(client);
-        return client;
+        return ResponseEntity.status(HttpStatus.CREATED).body(client);
     }
 
     @GetMapping("/kpideclientes")
-    public ClientsAgeData getKpideclientes() {
+    public ResponseEntity getClientsAgeData() {
         ClientsAgeData clientsAgeDate = clientService.getClientsAgeData();
-        return clientsAgeDate;
+        return ResponseEntity.ok(clientsAgeDate);
     }
 
     @GetMapping("/listclientes")
-    public List<ClientMortalityData> getClients() {
+    public ResponseEntity getClientsMortalityDate() {
         List<ClientMortalityData> clientsMortalityDataList = clientService.getClientsMortalityData();
-        return clientsMortalityDataList;
+        return ResponseEntity.ok(clientsMortalityDataList);
     }
 }

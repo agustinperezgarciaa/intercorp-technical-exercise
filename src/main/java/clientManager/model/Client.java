@@ -1,11 +1,8 @@
 package clientManager.model;
 
 import io.swagger.annotations.ApiModelProperty;
-import org.hibernate.annotations.NotFound;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.XmlTransient;
 import java.util.Date;
 
 /**
@@ -16,7 +13,6 @@ import java.util.Date;
 @Table
 public class Client {
 
-    @XmlTransient
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     @ApiModelProperty(hidden = true)
